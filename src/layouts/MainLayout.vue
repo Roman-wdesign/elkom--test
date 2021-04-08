@@ -1,107 +1,59 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <HyundaiSolaris></HyundaiSolaris>
-      <SkodaOctavia></SkodaOctavia>
-      <div class="pink">pink-4</div>
-
-    </q-header>
-
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-      content-class="bg-grey-1"
-    >
-      <q-list>
-        <q-item-label
-          header
-          class="text-grey-8"
-        >
-          Essential Links
-        </q-item-label>
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-
-      </q-list>
-    </q-drawer>
-
-    <q-page-container>
-      <router-view />
-    </q-page-container>
+    <div class="container">
+      <div class="all">
+        <HyundaiSolaris/>
+        <SkodaOctavia/>
+        <KiaOptima/>
+        <NissanQashqai/>
+        <ToyotaCamry/>
+      </div>
+    </div>
   </q-layout>
 </template>
 
 <script>
-import EssentialLink from 'components/EssentialLink.vue'
+
 import HyundaiSolaris from "components/cars/HyundaiSolaris";
 import SkodaOctavia from "components/cars/SkodaOctavia";
+import KiaOptima from "components/cars/KiaOptima";
+import NissanQashqai from "components/cars/NissanQashqai";
+import ToyotaCamry from "components/cars/ToyotaCamry";
 
-const linksData = [
-  {
-    title: 'Docs111',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
-];
 
 export default {
   name: 'MainLayout',
-  components: { EssentialLink, HyundaiSolaris, SkodaOctavia },
-  data () {
-    return {
-      leftDrawerOpen: false,
-      essentialLinks: linksData
-    }
+  components: {HyundaiSolaris, SkodaOctavia, KiaOptima, NissanQashqai, ToyotaCamry},
+  data() {
+    return {}
   }
 }
 </script>
 
 <style lang="scss">
 
-.pink {
-  color: $blue-7;
-  background-color: $blue-grey-2;
+html {
+  background-color: $grey-9;
+}
+
+.container {
+  display: flex;
+
+}
+
+.all {
+  display: flex;
+  text-align: center;
+  padding: 1rem;
+  justify-content: space-between;
+  width: 100%;
+
+  flex-direction: row;
+
+}
+.car{
+  width: 100%;
+  max-width: 12rem;
 }
 
 

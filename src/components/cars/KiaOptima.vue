@@ -16,11 +16,11 @@
 export default {
   data() {
     return {
-      title: 'SkodaOctavia',
-      text: 'а100ее'
+      title: 'Kia Optima',
+      text: 'к237тс'
     }
   },
-  name: 'SkodaOctavia'
+name: "KiaOptima"
 }
 </script>
 

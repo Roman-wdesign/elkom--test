@@ -1,22 +1,29 @@
 <template>
   <div class="car">
-    <h6>{{title}}</h6>
+    <q-card dark bordered class="bg-light-blue-6 my-card">
+      <q-card-section>
+        <h6>{{ text }}</h6>
+      </q-card-section>
+      <q-separator dark inset/>
+      <q-card-section>
+        <p>{{ title }}</p>
+      </q-card-section>
+    </q-card>
   </div>
 </template>
 
 <script>
 export default {
-  data(){
+  data() {
     return {
-      title: 'HyundaiSolaris'
+      title: 'HyundaiSolaris',
+      text: 'т123дс'
     }
   },
-name: "HyundaiSolaris"
+  name: 'HyundaiSolaris'
 }
 </script>
 
-<style lang="scss" scoped>
-.car {
-  background-color: $green-6;
-}
+<style scoped>
+
 </style>
