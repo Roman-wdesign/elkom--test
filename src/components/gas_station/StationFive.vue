@@ -1,6 +1,6 @@
 <template>
-  <div class="car">
-    <q-card dark bordered class="bg-light-blue-6 my-card">
+  <div class="oil">
+    <q-card dark bordered class="bg-grey-6 my-card">
       <q-card-section>
         <h6>{{ text }}</h6>
       </q-card-section>
@@ -14,14 +14,13 @@
 
 <script>
 export default {
-
   data() {
     return {
-      title: 'Nissan Qashqai',
-      text: 'у829ми'
+      title: 'Газпромнефть №175',
+      text: 'ул. Мичурина, 47Б'
     }
   },
-  name: "NissanQashqai"
+  name: "StationFive"
 }
 </script>
 

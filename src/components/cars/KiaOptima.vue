@@ -6,7 +6,7 @@
       </q-card-section>
       <q-separator dark inset/>
       <q-card-section>
-        <p >{{ title }}</p>
+        <p >{{   title   }}</p>
       </q-card-section>
     </q-card>
   </div>

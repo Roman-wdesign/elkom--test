@@ -16,7 +16,7 @@
 export default {
   data() {
     return {
-      title: 'ToyotaCamry',
+      title: 'Toyota Camry',
       text: 'р500нг'
     }
   },

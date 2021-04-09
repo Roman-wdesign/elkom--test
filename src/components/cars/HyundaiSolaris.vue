@@ -16,7 +16,7 @@
 export default {
   data() {
     return {
-      title: 'HyundaiSolaris',
+      title: 'Hyundai Solaris',
       text: 'т123дс'
     }
   },

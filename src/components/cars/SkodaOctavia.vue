@@ -16,7 +16,7 @@
 export default {
   data() {
     return {
-      title: 'SkodaOctavia',
+      title: 'Skoda Octavia',
       text: 'а100ее'
     }
   },
