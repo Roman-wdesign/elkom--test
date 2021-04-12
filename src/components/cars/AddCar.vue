@@ -1,27 +1,35 @@
 <template>
-  <div class="car">
-    <q-card dark bordered class="bg-light-blue-6 my-card">
+  <div class="adding">
+    <q-card dark bordered class="pink-7 my-card">
       <q-card-section>
         <p>Добавить новую машину</p>
         <input type="text" label="номер"
-
-                 v-bind:placeholder="placeholderString"
-                 v-bind:value="inputValue"
-                 v-on:input="inputChangeHandler"
-                 @keypress.enter="addNewNote"
+               class="q-gutter-md " style="max-width: 300px"
+               v-bind:placeholder="placeholderString"
+               v-bind:value="inputValue"
+               v-on:input="inputChangeHandler"
+               @keypress.enter="addNewCar"
         />
         <p> {{ inputValue }}</p>
       </q-card-section>
-      <q-separator dark inset/>
+
       <q-card-section>
+        <q-btn color="primary" @click="addNewCar" label="Добавить"/>
+        <ul class="list" v-if="cars.length !==0">
+          <li
+            class="car" v-for="(car, index) in cars" :key="car.id"
+            v-bind:title="car.title"
+            v-bind:personal="car.personal"
 
-        <q-btn color="primary" @click="addNewNote" label="Добавить"/>
+          >
+          {{index+1}}  {{ car.title}} {{car.personal}}
 
-        <ul class="list">
-          <li class="list-item" v-for="note in notes" :key="note">
-            {{ note }}
+            <q-btn flat style="color: #FF0080" label="удалить" @click="cars.splice(index, 1)"/>
           </li>
         </ul>
+        <q-separator dark inset/>
+
+
       </q-card-section>
     </q-card>
   </div>
@@ -32,11 +40,37 @@ export default {
 
   data() {
     return {
-      placeholderString: 'Введите название заметки',
-      title: 'Список заметок',
+      placeholderString: 'Введите номер машины',
       inputValue: '',
-      notes: ['1', '2'],
-      text: ''
+      newCarText: '',
+      cars: [
+        {
+          id: 1,
+          title: 'Hyundai Solaris',
+          personal: 'т123дс'
+        },
+        {
+          id: 2,
+          title: 'Kia Optima',
+          personal: 'к237тс'
+        },
+        {
+          id: 3,
+          title: 'Nissan Qashqai',
+          personal: 'у829ми'
+        },
+        {
+          id: 4,
+          title: 'Skoda Octavia',
+          personal: 'а100ее'
+        },
+        {
+          id: 5,
+          title: 'Toyota Camry',
+          personal: 'р500нг'
+        },
+      ],
+      nextCarId: 6
 
     }
   },
@@ -44,13 +78,22 @@ export default {
     inputChangeHandler(event) {
       this.inputValue = event.target.value
     },
-    addNewNote() {
+    addNewCar() {
+      if (this.inputValue !== '') {
+        this.cars.push({
+          id: this.nextCarId++,
+          title: this.newCarText
+        })
+        this.newCarText = ''
+        this.inputValue = ''
+      }
+    },
 
-      this.notes.push(this.inputValue)
-    }
   },
+
   name: 'AddCar'
 }
+
 
 </script>
 

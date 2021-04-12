@@ -3,11 +3,7 @@
     <div class="container">
 
       <div class="all_cars">
-        <HyundaiSolaris/>
-        <SkodaOctavia/>
-        <KiaOptima/>
-        <NissanQashqai/>
-        <ToyotaCamry/>
+
         <AddCar/>
       </div>
 
@@ -25,38 +21,34 @@
 
 <script>
 
-import HyundaiSolaris from "components/cars/HyundaiSolaris";
-import SkodaOctavia from "components/cars/SkodaOctavia";
-import KiaOptima from "components/cars/KiaOptima";
-import NissanQashqai from "components/cars/NissanQashqai";
-import ToyotaCamry from "components/cars/ToyotaCamry";
 
 import StationOne from "components/gas_station/StationOne";
 import StationTwo from "components/gas_station/StationTwo";
 import StationThree from "components/gas_station/StationThree";
 import StationFour from "components/gas_station/StationFour";
 import StationFive from "components/gas_station/StationFive";
+
+
 import AddCar from "components/cars/AddCar";
 
 
 export default {
   name: 'MainLayout',
   components: {
-    AddCar,
-    HyundaiSolaris,
-    SkodaOctavia,
-    KiaOptima,
-    NissanQashqai,
-    ToyotaCamry,
     StationOne,
     StationTwo,
     StationThree,
     StationFour,
-    StationFive
+    StationFive,
+    AddCar,
+
   },
   data() {
+
     return {}
-  }
+  },
+  methods: {}
+
 }
 </script>
 
@@ -72,10 +64,9 @@ html {
   padding: 0 1rem;
 }
 
-
-.car {
+.adding {
   width: 100%;
-  max-width: 9rem;
+  max-width: 20rem;
   padding: 0 1rem;
 
   p, h6 {
@@ -85,13 +76,25 @@ html {
   }
 }
 
+.car {
+  width: 100%;
+  max-width: 9rem;
+  padding: 0 1rem;
+
+  p, h6 {
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: #ffffff;
+  }
+}
+
 .oil {
   padding: 0 1rem;
   width: 100%;
-  max-width: 12rem;
+  max-width: 11rem;
 
   p, h6 {
-    font-size: 1rem;
+    font-size: 0.88rem;
     font-weight: 300;
     color: #ffffff;
   }
