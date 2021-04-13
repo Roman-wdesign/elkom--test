@@ -1,10 +1,10 @@
 <template>
   <div class="adding">
-    <q-card dark bordered class="pink-7 my-card">
+    <q-card dark bordered class="my-card">
       <q-card-section>
         <p>Добавить новую машину</p>
         <input type="text" label="номер"
-               class="q-gutter-md " style="max-width: 300px"
+               class="q-gutter-md "
                v-bind:placeholder="placeholderString"
                v-bind:value="inputValue"
                v-on:input="inputChangeHandler"
@@ -19,17 +19,24 @@
           <li
             class="car" v-for="(car, index) in cars" :key="car.id"
             v-bind:title="car.title"
-            v-bind:personal="car.personal"
-
+            v-bind:text="car.text"
           >
-          {{index+1}}  {{ car.title}} {{car.personal}}
+          <div class="car">
+              <q-card dark bordered class="bg-light-blue-6 my-card">
+                <q-card-section>
+                  <h6>{{index+1}} {{car.text}}</h6>
+                </q-card-section>
+                <q-separator dark inset/>
+                <q-card-section>
+                  <p>{{ car.title}}</p>
+                </q-card-section>
+              </q-card>
+            </div>
 
             <q-btn flat style="color: #FF0080" label="удалить" @click="cars.splice(index, 1)"/>
           </li>
         </ul>
         <q-separator dark inset/>
-
-
       </q-card-section>
     </q-card>
   </div>
@@ -47,27 +54,27 @@ export default {
         {
           id: 1,
           title: 'Hyundai Solaris',
-          personal: 'т123дс'
+          text: 'т123дс'
         },
         {
           id: 2,
           title: 'Kia Optima',
-          personal: 'к237тс'
+          text: 'к237тс'
         },
         {
           id: 3,
           title: 'Nissan Qashqai',
-          personal: 'у829ми'
+          text: 'у829ми'
         },
         {
           id: 4,
           title: 'Skoda Octavia',
-          personal: 'а100ее'
+          text: 'а100ее'
         },
         {
           id: 5,
           title: 'Toyota Camry',
-          personal: 'р500нг'
+          text: 'р500нг'
         },
       ],
       nextCarId: 6
@@ -100,6 +107,9 @@ export default {
 <style lang="scss" scoped>
 p {
   font-size: 1rem;
+}
+.list{
+  display: flex;
 }
 </style>
 

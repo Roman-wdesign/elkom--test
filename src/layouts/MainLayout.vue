@@ -77,6 +77,7 @@ html {
 }
 
 .car {
+
   width: 100%;
   max-width: 9rem;
   padding: 0 1rem;
@@ -102,7 +103,7 @@ html {
 }
 
 .all_cars, .all_stations {
-
+flex-direction: row;
   display: flex;
   text-align: center;
   padding: 1rem 0 0 0;
