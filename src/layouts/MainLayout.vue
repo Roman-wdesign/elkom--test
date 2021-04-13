@@ -3,7 +3,6 @@
     <div class="container">
 
       <div class="all_cars">
-
         <AddCar/>
       </div>
 
@@ -61,7 +60,7 @@ html {
 .container {
   display: flex;
   flex-direction: column;
-  padding: 0 1rem;
+  padding: 0.5rem 0 ;
 }
 
 .adding {
@@ -76,18 +75,7 @@ html {
   }
 }
 
-.car {
 
-  width: 100%;
-  max-width: 9rem;
-  padding: 0 1rem;
-
-  p, h6 {
-    font-size: 0.88rem;
-    font-weight: 300;
-    color: #ffffff;
-  }
-}
 
 .oil {
   padding: 0 1rem;
@@ -103,15 +91,15 @@ html {
 }
 
 .all_cars, .all_stations {
-flex-direction: row;
+
   display: flex;
   text-align: center;
   padding: 1rem 0 0 0;
   justify-content: flex-start;
   width: 100%;
-  flex-direction: row;
   align-items: center;
 }
+
 
 
 </style>
