@@ -2,15 +2,15 @@
   <div class="adding">
     <q-card dark bordered class="my-card">
       <p>Добавить новую машину</p>
-      <input type="text" label="номер"
-             class="q-gutter-md "
+
+      <p> {{ inputValue }}</p>
+      <q-btn color="primary"
+             @click="addNewCar"
              v-bind:placeholder="placeholderString"
              v-bind:value="inputValue"
              v-on:input="inputChangeHandler"
              @keypress.enter="addNewCar"
-      />
-      <p> {{ inputValue }}</p>
-      <q-btn color="primary" @click="addNewCar" label="Добавить"/>
+             label="Добавить"/>
     </q-card>
 
     <q-card-section>
@@ -53,32 +53,37 @@ export default {
     return {
       placeholderString: 'Введите номер машины',
       inputValue: '',
-      newCarText: '',
+
       cars: [
         {
           id: 1,
           title: 'Hyundai Solaris',
-          text: 'т123дс'
+          text: 'т123дс',
+          edit:false
         },
         {
           id: 2,
           title: 'Kia Optima',
-          text: 'к237тс'
+          text: 'к237тс',
+          edit:false
         },
         {
           id: 3,
           title: 'Nissan Qashqai',
-          text: 'у829ми'
+          text: 'у829ми',
+          edit:false
         },
         {
           id: 4,
           title: 'Skoda Octavia',
-          text: 'а100ее'
+          text: 'а100ее',
+          edit:false
         },
         {
           id: 5,
           title: 'Toyota Camry',
-          text: 'р500нг'
+          text: 'р500нг',
+          edit:false
         },
       ],
       nextCarId: 6
@@ -90,12 +95,11 @@ export default {
       this.inputValue = event.target.value
     },
     addNewCar() {
-      if (this.inputValue !== '') {
+      {
         this.cars.push({
-          id: this.nextCarId++,
-          title: this.newCarText
+          id: this.nextCarId++
         })
-        this.newCarText = ''
+
         this.inputValue = ''
       }
     },
