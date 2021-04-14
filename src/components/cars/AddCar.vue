@@ -32,7 +32,7 @@
               </q-card-section>
               <q-btn class="delete_btn"
                      label="Удалить"
-                     @click="cars.splice(index, 1)"
+                     @click="removeObj(index)"
               />
             </q-card>
           </div>
@@ -45,6 +45,9 @@
 
 <script>
 export default {
+  props: {
+    title: String
+  },
 
   data() {
     return {
@@ -96,6 +99,9 @@ export default {
         this.inputValue = ''
       }
     },
+    removeObj(index) {
+      this.cars.splice(index, 1)
+    }
 
   },
 
@@ -106,6 +112,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.adding {
+  display: flex;
+  text-align: center;
+  padding: 1rem;
+  justify-content: flex-start;
+  width: 100%;
+  align-items: center;
+
+  p, h6 {
+    font-size: 1rem;
+    font-weight: 300;
+    color: #ffffff;
+  }
+}
+
 .car {
 
   width: 100%;
@@ -120,8 +141,12 @@ export default {
 }
 
 .my-card {
+
   width: 100%;
-  padding: 0.5rem 0;
+  max-width: 16rem;
+  margin: 1rem;
+  padding: 0.5rem;
+
 }
 
 .rounded {
@@ -148,8 +173,8 @@ p {
 
 .list {
   width: 100%;
-//flex-direction: row;
-//  flex-wrap: wrap;
+  //flex-direction: row;
+  //  flex-wrap: wrap;
   display: flex;
 
 }

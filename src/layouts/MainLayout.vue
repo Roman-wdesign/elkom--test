@@ -2,9 +2,9 @@
   <q-layout view="lHh Lpr lFf">
     <div class="container">
 
-      <div class="all_cars">
+
         <AddCar/>
-      </div>
+
 
       <div class="all_stations">
         <StationOne/>
@@ -34,13 +34,12 @@ import AddCar from "components/cars/AddCar";
 export default {
   name: 'MainLayout',
   components: {
+    AddCar,
     StationOne,
     StationTwo,
     StationThree,
     StationFour,
     StationFive,
-    AddCar,
-
   },
   data() {
 
@@ -60,22 +59,8 @@ html {
 .container {
   display: flex;
   flex-direction: column;
-  padding: 0.5rem 0 ;
+  padding: 0.5rem 0;
 }
-
-.adding {
-  width: 100%;
-  max-width: 20rem;
-  padding: 0 1rem;
-
-  p, h6 {
-    font-size: 1rem;
-    font-weight: 300;
-    color: #ffffff;
-  }
-}
-
-
 
 .oil {
   padding: 0 1rem;
@@ -90,16 +75,13 @@ html {
 
 }
 
-.all_cars, .all_stations {
 
+.all_stations{
   display: flex;
   text-align: center;
-  padding: 1rem 0 0 0;
+  //padding: 1rem 0 0 0;
   justify-content: flex-start;
   width: 100%;
   align-items: center;
 }
-
-
-
 </style>
