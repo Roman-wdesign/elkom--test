@@ -24,7 +24,7 @@
             <q-card dark bordered class="bg-light-blue-6 my-card">
               <q-card-section>
                 <div class="rounded">{{ index + 1 }}</div>
-                <h6>{{ car.text }}</h6>
+                <p>{{ car.text }}</p>
               </q-card-section>
               <q-separator dark inset/>
               <q-card-section>
@@ -54,36 +54,37 @@ export default {
       placeholderString: 'Введите номер машины',
       inputValue: '',
 
+
       cars: [
         {
           id: 1,
           title: 'Hyundai Solaris',
           text: 'т123дс',
-          edit:false
+          edit: false
         },
         {
           id: 2,
           title: 'Kia Optima',
           text: 'к237тс',
-          edit:false
+          edit: false
         },
         {
           id: 3,
           title: 'Nissan Qashqai',
           text: 'у829ми',
-          edit:false
+          edit: false
         },
         {
           id: 4,
           title: 'Skoda Octavia',
           text: 'а100ее',
-          edit:false
+          edit: false
         },
         {
           id: 5,
           title: 'Toyota Camry',
           text: 'р500нг',
-          edit:false
+          edit: false
         },
       ],
       nextCarId: 6
@@ -97,7 +98,10 @@ export default {
     addNewCar() {
       {
         this.cars.push({
-          id: this.nextCarId++
+
+          id: this.nextCarId++,
+          title: 'ввести марку',
+          text: 'ввести номер'
         })
 
         this.inputValue = ''
@@ -105,22 +109,25 @@ export default {
     },
     removeObj(index) {
       this.cars.splice(index, 1)
-    }
+    },
 
   },
 
-  name: 'AddCar'
+  name: 'AddCar',
+  title: 'new'
 }
 
 
 </script>
 
 <style lang="scss" scoped>
+
 .adding {
   display: flex;
   text-align: center;
   padding: 1rem;
   justify-content: flex-start;
+
   width: 100%;
   align-items: center;
 
@@ -132,7 +139,10 @@ export default {
 }
 
 .car {
+  display: flex;
+  justify-content: center;
 
+  align-items: center;
   width: 100%;
   max-width: 9rem;
   padding: 0 1rem;
@@ -178,13 +188,14 @@ p {
 .list {
   width: 100%;
   //flex-direction: row;
-  //  flex-wrap: wrap;
   display: flex;
+  flex-wrap: wrap;
+
+  flex-direction: row-reverse;
 
 }
 
 .listeners {
-
   display: flex;
 
 }
