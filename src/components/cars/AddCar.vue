@@ -20,11 +20,17 @@
              v-bind:title="car.title"
              v-bind:text="car.text"
         >
+
           <div class="car">
             <q-card dark bordered class="bg-light-blue-6 my-card">
               <q-card-section>
                 <div class="rounded">{{ index + 1 }}</div>
-                <p>{{ car.text }}</p>
+                <input v-if = "car.edit" v-model = "car.text"
+                       @blur= "car.edit = false; $emit('update')"
+                       @keyup.enter = "car.edit=false; $emit('update')">
+                <div v-else>
+                  <label @click = "car.edit = true;"> {{car.text}} </label>
+                </div>
               </q-card-section>
               <q-separator dark inset/>
               <q-card-section>
@@ -110,7 +116,9 @@ export default {
     removeObj(index) {
       this.cars.splice(index, 1)
     },
-
+    editCard: function(car) {
+      this.editedCard = car;
+    },
   },
 
   name: 'AddCar',
@@ -158,10 +166,12 @@ export default {
 
   width: 100%;
   max-width: 16rem;
+  min-width: 7.2rem;
   margin: 1rem;
   padding: 0.5rem;
 
 }
+
 
 .rounded {
   color: $light-blue-8;
@@ -191,7 +201,7 @@ p {
   display: flex;
   flex-wrap: wrap;
 
-  flex-direction: row-reverse;
+  flex-direction: row;
 
 }
 
