@@ -1,7 +1,7 @@
 <template>
   <div class="adding">
     <q-card dark bordered class="my-card">
-      <p>Добавить новую машину</p>
+      <p>{{ placeholderString }}</p>
 
       <p> {{ inputValue }}</p>
       <q-btn color="primary"
@@ -37,7 +37,14 @@
               </q-card-section>
               <q-separator dark inset/>
               <q-card-section>
-                <p>{{ car.title }}</p>
+                <input
+                  class="changing"
+                  v-if="car.edit" v-model="car.title"
+                  @blur="car.edit = false; $emit('updateSecond')"
+                  @keyup.enter="car.edit=false; $emit('updateSecond')">
+                <div v-else>
+                  <label @click="car.edit = true;" v-on:click="this.select(title);"> {{ car.title }} </label>
+                </div>
               </q-card-section>
               <q-btn class="delete_btn"
                      label="Удалить"
@@ -60,9 +67,8 @@ export default {
 
   data() {
     return {
-      // placeholderString: 'Введите номер машины',
+      placeholderString: '+ новая машина',
       inputValue: '',
-
 
 
       cars: [
@@ -98,7 +104,8 @@ export default {
         },
       ],
       nextCarId: 6,
-      editedCard: null
+      editedCard: null,
+
 
     }
   },
@@ -111,8 +118,8 @@ export default {
         this.cars.push({
 
           id: this.nextCarId++,
-          title: 'ввести марку',
-          text: 'ввести номер',
+          title: 'марка',
+          text: 'номер',
           edit: true
         })
 
@@ -128,14 +135,14 @@ export default {
   },
 
   name: 'AddCar',
-  title: 'new'
+  title: 'new',
 }
 
 
 </script>
 
 <style lang="scss" scoped>
-.changing{
+.changing {
   width: 100%;
   box-sizing: border-box;
 }
