@@ -15,21 +15,24 @@
 
     <q-card-section>
       <div class="list" v-if="cars.length !==0">
-        <div class="listeners"
+        <div class="listeners "
              v-for="(car, index) in cars" :key="car.id"
              v-bind:title="car.title"
              v-bind:text="car.text"
+
         >
 
           <div class="car">
             <q-card dark bordered class="bg-light-blue-6 my-card">
               <q-card-section>
                 <div class="rounded">{{ index + 1 }}</div>
-                <input v-if = "car.edit" v-model = "car.text"
-                       @blur= "car.edit = false; $emit('update')"
-                       @keyup.enter = "car.edit=false; $emit('update')">
+                <input
+                  class="changing"
+                  v-if="car.edit" v-model="car.text"
+                  @blur="car.edit = false; $emit('update')"
+                  @keyup.enter="car.edit=false; $emit('update')">
                 <div v-else>
-                  <label @click = "car.edit = true;"> {{car.text}} </label>
+                  <label @click="car.edit = true;"> {{ car.text }} </label>
                 </div>
               </q-card-section>
               <q-separator dark inset/>
@@ -57,8 +60,9 @@ export default {
 
   data() {
     return {
-      placeholderString: 'Введите номер машины',
+      // placeholderString: 'Введите номер машины',
       inputValue: '',
+
 
 
       cars: [
@@ -93,7 +97,8 @@ export default {
           edit: false
         },
       ],
-      nextCarId: 6
+      nextCarId: 6,
+      editedCard: null
 
     }
   },
@@ -107,7 +112,8 @@ export default {
 
           id: this.nextCarId++,
           title: 'ввести марку',
-          text: 'ввести номер'
+          text: 'ввести номер',
+          edit: true
         })
 
         this.inputValue = ''
@@ -116,7 +122,7 @@ export default {
     removeObj(index) {
       this.cars.splice(index, 1)
     },
-    editCard: function(car) {
+    editCard: function (car) {
       this.editedCard = car;
     },
   },
@@ -129,12 +135,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.changing{
+  width: 100%;
+  box-sizing: border-box;
+}
 
 .adding {
   display: flex;
   text-align: center;
   padding: 1rem;
   justify-content: flex-start;
+
 
   width: 100%;
   align-items: center;
@@ -147,6 +158,7 @@ export default {
 }
 
 .car {
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
 
@@ -163,7 +175,7 @@ export default {
 }
 
 .my-card {
-
+  box-sizing: border-box;
   width: 100%;
   max-width: 16rem;
   min-width: 7.2rem;
@@ -196,6 +208,7 @@ p {
 }
 
 .list {
+
   width: 100%;
   //flex-direction: row;
   display: flex;
