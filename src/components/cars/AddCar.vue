@@ -19,7 +19,6 @@
              v-for="(car, index) in cars" :key="car.id"
              v-bind:title="car.title"
              v-bind:text="car.text"
-
         >
 
           <div class="car">
@@ -43,7 +42,7 @@
                   @blur="car.edit = false; $emit('updateSecond')"
                   @keyup.enter="car.edit=false; $emit('updateSecond')">
                 <div v-else>
-                  <label @click="car.edit = true;" v-on:click="this.select(title);"> {{ car.title }} </label>
+                  <label @click="car.edit = true;" > {{ car.title }} </label>
                 </div>
               </q-card-section>
               <q-btn class="delete_btn"
@@ -62,7 +61,8 @@
 <script>
 export default {
   props: {
-    title: String
+    title: String,
+    text: String
   },
 
   data() {
