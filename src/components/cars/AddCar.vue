@@ -36,13 +36,14 @@
               </q-card-section>
               <q-separator dark inset/>
               <q-card-section>
+
                 <input
                   class="changing"
                   v-if="car.edit" v-model="car.title"
                   @blur="car.edit = false; $emit('updateSecond')"
                   @keyup.enter="car.edit=false; $emit('updateSecond')">
                 <div v-else>
-                  <label @click="car.edit = true;" > {{ car.title }} </label>
+                  <label @click="car.edit = true;"> {{ car.title }} </label>
                 </div>
               </q-card-section>
               <q-btn class="delete_btn"
@@ -150,9 +151,7 @@ export default {
 .adding {
   display: flex;
   text-align: center;
-  padding: 1rem;
   justify-content: flex-start;
-
 
   width: 100%;
   align-items: center;
