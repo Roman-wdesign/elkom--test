@@ -4,14 +4,8 @@
 
       <TheMenu/>
       <AddCar/>
-
-
       <div class="all_stations">
-        <StationOne/>
-        <StationTwo/>
-        <StationThree/>
-        <StationFour/>
-        <StationFive/>
+        <AddStation/>
       </div>
 
     </div>
@@ -21,14 +15,8 @@
 <script>
 
 import TheMenu from "components/TheMenu";
-import StationOne from "components/gas_station/StationOne";
-import StationTwo from "components/gas_station/StationTwo";
-import StationThree from "components/gas_station/StationThree";
-import StationFour from "components/gas_station/StationFour";
-import StationFive from "components/gas_station/StationFive";
-
-
 import AddCar from "components/cars/AddCar";
+import AddStation from "components/gas_station/AddStation";
 
 
 export default {
@@ -36,11 +24,7 @@ export default {
   components: {
     TheMenu,
     AddCar,
-    StationOne,
-    StationTwo,
-    StationThree,
-    StationFour,
-    StationFive,
+    AddStation
   },
   data() {
 
