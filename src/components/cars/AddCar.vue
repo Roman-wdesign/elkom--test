@@ -219,7 +219,6 @@ p {
   //flex-direction: row;
   display: flex;
   flex-wrap: wrap;
-
   flex-direction: row;
 
 }

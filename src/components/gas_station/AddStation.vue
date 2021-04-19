@@ -4,13 +4,13 @@
       <p>{{ placeholderString }}</p>
 
       <p> {{ inputValue }}</p>
-      <q-btn color="station"
-             @click="addNewStation"
-             v-bind:placeholder="placeholderString"
-             v-bind:value="inputValue"
-             v-on:input="inputChangeHandler"
-             @keypress.enter="addNewStation"
-             label="Добавить"/>
+      <q-btn
+        @click="addNewStation"
+        v-bind:placeholder="placeholderString"
+        v-bind:value="inputValue"
+        v-on:input="inputChangeHandler"
+        @keypress.enter="addNewStation"
+        label="Добавить"/>
     </q-card>
 
     <q-card-section>
@@ -68,7 +68,7 @@
 
 <script>
 export default {
-  props:{
+  props: {
     title: String,
     address: String,
     fuel: String,
@@ -149,9 +149,11 @@ export default {
 
 
 <style lang="scss" scoped>
+
 .q-btn {
   background-color: $grey-7;
 }
+
 .changing {
   width: 100%;
   box-sizing: border-box;
@@ -173,11 +175,13 @@ export default {
 }
 
 .station {
-
   box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 1rem;
+  width: 100%;
+  max-width: 12.5rem;
   padding: 0 1rem;
 
   p, h6 {
@@ -186,6 +190,7 @@ export default {
     color: #ffffff;
   }
 }
+
 
 .my-card {
   box-sizing: border-box;
@@ -199,7 +204,6 @@ export default {
 
 
 .rounded {
-  align-items: center;
   color: $light-blue-8;
   width: 2rem;
   height: 2rem;
