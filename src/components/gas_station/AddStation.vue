@@ -11,6 +11,11 @@
         v-on:input="inputChangeHandler"
         @keypress.enter="addNewStation"
         label="Добавить"/>
+      <div class="all_fuel">
+        <p>всего:
+          {{allFuel}}
+          литров</p>
+      </div>
     </q-card>
 
     <q-card-section>
@@ -27,7 +32,14 @@
                 <div class="rounded">{{ index + 1 }}</div>
 
                 <div class="fuel">
-                  {{ station.fuel }}
+                  <input
+                    class="changing"
+                    v-if="station.edit" v-model="station.fuel"
+                    @blur="station.edit = false; $emit('fuel')"
+                    @keyup.enter="station.edit=false; $emit('fuel')">
+                  <div v-else>
+                    <label @click="station.edit = true;"> {{ station.fuel }} </label>
+                  </div>
                 </div>
 
                 <input
@@ -71,7 +83,7 @@ export default {
   props: {
     title: String,
     address: String,
-    fuel: String,
+
   },
   data() {
     return {
@@ -82,41 +94,48 @@ export default {
           id: 1,
           title: 'Газпромнефть №110',
           address: 'Комсомольский просп., 18',
-          fuel: '10 000 литров',
+          fuel: 10000,
           edit: false
         },
         {
           id: 2,
           title: 'Газпромнефть №110',
           address: 'Комсомольский просп., 18',
-          fuel: '10 000 литров',
+          fuel: 10000,
           edit: false
         },
         {
           id: 3,
           title: 'Газпромнефть №110',
           address: 'Комсомольский просп., 18',
-          fuel: '10 000 литров',
+          fuel: 10000,
           edit: false
         },
         {
           id: 4,
           title: 'Газпромнефть №110',
           address: 'Комсомольский просп., 18',
-          fuel: '10 000 литров',
+          fuel: 10000,
           edit: false
         },
         {
           id: 5,
           title: 'Газпромнефть №110',
           address: 'Комсомольский просп., 18',
-          fuel: '10 000 литров',
+          fuel: 10000,
           edit: false
         },
       ],
       nextStationId: 6,
       editedStation: null
     }
+  },
+  computed: {
+allFuel(){
+  return this.stations.reduce(function (prev, cur){
+   return  prev + cur.fuel
+  },0)
+}
   },
   methods: {
     inputChangeHandler(event) {
@@ -129,6 +148,7 @@ export default {
           id: this.nextStationId++,
           title: 'название',
           address: 'адрес',
+          fuel: 'топливо',
           edit: true
         })
 
@@ -149,6 +169,15 @@ export default {
 
 
 <style lang="scss" scoped>
+
+.all_fuel {
+  margin: 0.5rem 0;
+}
+
+.fuel {
+  margin: 0.5rem 0;
+}
+
 
 .q-btn {
   background-color: $grey-7;
