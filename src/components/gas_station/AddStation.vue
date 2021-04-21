@@ -13,7 +13,7 @@
         label="Добавить"/>
       <div class="all_fuel">
         <p>всего:
-          {{allFuel}}
+          {{ allFuel }}
           литров</p>
       </div>
     </q-card>
@@ -23,7 +23,9 @@
         <div class="listeners "
              v-for="(station, index) in stations" :key="station.id"
              v-bind:title="station.title"
-             v-bind:text="station.text"
+             v-bind:address="station.address"
+             v-bind:fuel="station.fuel"
+
         >
 
           <div class="station">
@@ -83,59 +85,63 @@ export default {
   props: {
     title: String,
     address: String,
+    fuel: Number,
+
 
   },
   data() {
     return {
       placeholderString: '+ новая станция',
       inputValue: '',
+
       stations: [
         {
           id: 1,
           title: 'Газпромнефть №110',
           address: 'Комсомольский просп., 18',
-          fuel: 10000,
+          fuel: 5,
           edit: false
         },
         {
           id: 2,
           title: 'Газпромнефть №110',
           address: 'Комсомольский просп., 18',
-          fuel: 10000,
+          fuel: 5,
           edit: false
         },
         {
           id: 3,
           title: 'Газпромнефть №110',
           address: 'Комсомольский просп., 18',
-          fuel: 10000,
+          fuel: 2,
           edit: false
         },
         {
           id: 4,
           title: 'Газпромнефть №110',
           address: 'Комсомольский просп., 18',
-          fuel: 10000,
+          fuel: 2,
           edit: false
         },
         {
           id: 5,
           title: 'Газпромнефть №110',
           address: 'Комсомольский просп., 18',
-          fuel: 10000,
+          fuel: 1,
           edit: false
         },
       ],
       nextStationId: 6,
-      editedStation: null
+      editedStation: null,
+
     }
   },
   computed: {
-allFuel(){
-  return this.stations.reduce(function (prev, cur){
-   return  prev + cur.fuel
-  },0)
-}
+
+    allFuel() {
+      return this.stations.reduce((sum, station) => sum + parseFloat(station.fuel), 0);
+
+    }
   },
   methods: {
     inputChangeHandler(event) {
@@ -148,7 +154,7 @@ allFuel(){
           id: this.nextStationId++,
           title: 'название',
           address: 'адрес',
-          fuel: 'топливо',
+          fuel: 0,
           edit: true
         })
 
