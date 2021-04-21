@@ -12,9 +12,7 @@
         @keypress.enter="addNewStation"
         label="Добавить"/>
       <div class="all_fuel">
-        <p>всего:
-          {{ allFuel }}
-          литров</p>
+        <p>Всего топлива: <br>  {{ allFuel }} литров</p>
       </div>
     </q-card>
 
@@ -34,13 +32,14 @@
                 <div class="rounded">{{ index + 1 }}</div>
 
                 <div class="fuel">
+
                   <input
                     class="changing"
                     v-if="station.edit" v-model="station.fuel"
                     @blur="station.edit = false; $emit('fuel')"
                     @keyup.enter="station.edit=false; $emit('fuel')">
                   <div v-else>
-                    <label @click="station.edit = true;"> {{ station.fuel }} </label>
+                    <label @click="station.edit = true;"> {{ station.fuel }} литров </label>
                   </div>
                 </div>
 
@@ -140,10 +139,10 @@ export default {
 
     allFuel() {
       return this.stations.reduce((sum, station) => sum + parseFloat(station.fuel), 0);
-
     }
   },
   methods: {
+
     inputChangeHandler(event) {
       this.inputValue = event.target.value
     },
@@ -239,12 +238,13 @@ export default {
 
 
 .rounded {
+  align-items: center;
   color: $light-blue-8;
   width: 2rem;
   height: 2rem;
   line-height: 2rem;
   background: #ffffff;
-  margin: 1em;
+  margin: auto;
   border-radius: 50%;
   text-align: center;
 }
