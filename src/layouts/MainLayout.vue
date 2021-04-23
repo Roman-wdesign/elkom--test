@@ -1,13 +1,11 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <div class="container">
-
       <TheMenu/>
       <AddCar/>
       <div class="all_stations">
         <AddStation/>
       </div>
-
     </div>
   </q-layout>
 </template>

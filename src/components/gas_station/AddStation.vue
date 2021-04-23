@@ -1,6 +1,8 @@
 <template>
+
   <div class="adding">
     <q-card dark bordered class="bg-grey-6 my-card">
+
       <p>{{ placeholderString }}</p>
 
       <p> {{ inputValue }}</p>
@@ -12,7 +14,7 @@
         @keypress.enter="addNewStation"
         label="Добавить"/>
       <div class="all_fuel">
-        <p>Всего топлива: <br>  {{ allFuel }} литров</p>
+        <p>Всего топлива: <br> {{ allFuel }} литров</p>
       </div>
     </q-card>
 
@@ -234,6 +236,9 @@ export default {
   margin: 1rem;
   padding: 0.5rem;
 
+}
+.main{
+  margin:0 0 0.5rem  0;
 }
 
 

@@ -7,6 +7,16 @@ const routes = [
       { path: '', component: () => import('pages/Index.vue') }
     ]
   },
+  {
+    path: '/cars',
+    component: () => import('components/cars/AddCar'),
+
+  },
+
+  {
+    path: '/stations',
+    component: () => import('components/gas_station/AddStation'),
+  },
 
   // Always leave this as last one,
   // but you can also remove it
