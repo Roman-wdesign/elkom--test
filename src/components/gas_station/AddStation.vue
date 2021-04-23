@@ -1,6 +1,9 @@
 <template>
 
   <div class="adding">
+  <slot>
+    <TheMenu/>
+  </slot>
     <q-card dark bordered class="bg-grey-6 my-card">
 
       <p>{{ placeholderString }}</p>
@@ -82,7 +85,9 @@
 </template>
 
 <script>
+import TheMenu from "components/TheMenu";
 export default {
+  components: {TheMenu},
   props: {
     title: String,
     address: String,
