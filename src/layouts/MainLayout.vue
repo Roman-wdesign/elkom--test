@@ -1,14 +1,11 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <div class="container">
-      <add-car>
-      </add-car>
-      <div class="all_stations">
-        <add-station/>
-      </div>
-
+  <div class="container">
+    <add-car>
+    </add-car>
+    <div class="all_stations">
+      <add-station/>
     </div>
-  </q-layout>
+  </div>
 </template>
 
 <script>
