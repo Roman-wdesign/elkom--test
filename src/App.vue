@@ -1,10 +1,13 @@
 <template>
   <div id="q-app">
+    <the-menu/>
     <router-view />
   </div>
 </template>
 <script>
+import TheMenu from "components/TheMenu";
 export default {
-  name: 'App'
+  name: 'App',
+  components: {TheMenu}
 }
 </script>

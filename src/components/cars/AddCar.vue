@@ -1,5 +1,6 @@
 <template>
   <div class="adding">
+
     <q-card dark bordered class="my-card">
       <p>{{ placeholderString }}</p>
 
@@ -13,49 +14,50 @@
              label="Добавить"/>
     </q-card>
 
-    <q-card-section>
-      <div class="list" v-if="cars.length !==0">
-        <div class="listeners "
-             v-for="(car, index) in cars" :key="car.id"
-             v-bind:title="car.title"
-             v-bind:text="car.text"
-        >
+      <q-card-section>
+        <div class="list" v-if="cars.length !==0">
+          <div class="listeners"
+               v-for="(car, index) in cars" :key="car.id"
+               v-bind:title="car.title"
+               v-bind:text="car.text"
+          >
+            <slot :iter="car" :index="index" :text="text" :title="title"></slot>
 
-          <div class="car">
-            <q-card dark bordered class="bg-light-blue-6 my-card">
-              <q-card-section>
-                <div class="rounded">{{ index + 1 }}</div>
-                <input
-                  class="changing"
-                  v-if="car.edit" v-model="car.text"
-                  @blur="car.edit = false; $emit('update')"
-                  @keyup.enter="car.edit=false; $emit('update')">
-                <div v-else>
-                  <label @click="car.edit = true;"> {{ car.text }} </label>
-                </div>
-              </q-card-section>
-              <q-separator dark inset/>
-              <q-card-section>
 
-                <input
-                  class="changing"
-                  v-if="car.edit" v-model="car.title"
-                  @blur="car.edit = false; $emit('updateSecond')"
-                  @keyup.enter="car.edit=false; $emit('updateSecond')">
-                <div v-else>
-                  <label @click="car.edit = true;"> {{ car.title }} </label>
-                </div>
-              </q-card-section>
-              <q-btn class="delete_btn"
-                     label="Удалить"
-                     @click="removeObj(index)"
-              />
-            </q-card>
+              <div class="car">
+              <q-card dark bordered class="bg-light-blue-6 my-card">
+                <q-card-section>
+                  <div class="rounded">{{ index + 1 }}</div>
+                  <input
+                    class="changing"
+                    v-if="car.edit" v-model="car.text"
+                    @blur="car.edit = false; $emit('update')"
+                    @keyup.enter="car.edit=false; $emit('update')">
+                  <div v-else>
+                    <label @click="car.edit = true;"> {{ car.text }} </label>
+                  </div>
+                </q-card-section>
+                <q-separator dark inset/>
+                <q-card-section>
+
+                  <input
+                    class="changing"
+                    v-if="car.edit" v-model="car.title"
+                    @blur="car.edit = false; $emit('updateSecond')"
+                    @keyup.enter="car.edit=false; $emit('updateSecond')">
+                  <div v-else>
+                    <label @click="car.edit = true;"> {{ car.title }} </label>
+                  </div>
+                </q-card-section>
+                <q-btn class="delete_btn"
+                       label="Удалить"
+                       @click="removeObj(index)"
+                />
+              </q-card>
+            </div>
           </div>
         </div>
-      </div>
-    </q-card-section>
-
+      </q-card-section>
   </div>
 </template>
 
@@ -130,9 +132,6 @@ export default {
     removeObj(index) {
       this.cars.splice(index, 1)
     },
-    editCard: function (car) {
-      this.editedCard = car;
-    },
   },
 
   name: 'AddCar',
@@ -185,7 +184,7 @@ export default {
   width: 100%;
   max-width: 16rem;
   min-width: 7.2rem;
-  margin: 1rem;
+  margin: 0.5rem;
   padding: 0.5rem;
 
 }

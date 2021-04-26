@@ -1,18 +1,18 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <div class="container">
-      <TheMenu/>
-      <AddCar/>
+      <add-car>
+      </add-car>
       <div class="all_stations">
-        <AddStation/>
+        <add-station/>
       </div>
+
     </div>
   </q-layout>
 </template>
 
 <script>
 
-import TheMenu from "components/TheMenu";
 import AddCar from "components/cars/AddCar";
 import AddStation from "components/gas_station/AddStation";
 
@@ -20,7 +20,7 @@ import AddStation from "components/gas_station/AddStation";
 export default {
   name: 'MainLayout',
   components: {
-    TheMenu,
+
     AddCar,
     AddStation
   },
@@ -40,10 +40,10 @@ html {
 }
 
 .container {
-  left: 0;
+
   display: flex;
   flex-direction: column;
-  padding: 0.5rem 0;
+
 }
 
 .oil {

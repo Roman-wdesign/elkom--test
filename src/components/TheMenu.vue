@@ -1,19 +1,26 @@
 <template>
-  <div class="q-pa-md">
+  <div class="q-pb-xs">
     <q-layout view="lHh lpr lFf" container style="height: 50px" class="shadow-2 rounded-borders">
       <q-header elevated>
         <q-toolbar>
+
+          <q-item clickable to="/" v-close-popup>
+            <div class="text-white" style="font-size: 1.5rem; padding-right: 0.2rem">
+              <span class="material-icons">home</span>
+            </div>
+          </q-item>
+
           <q-btn color="primary" label="Menu">
             <q-menu>
               <q-list style="min-width: 70px">
 
                 <q-item clickable to="/cars" v-close-popup>
                   <div class="text-light-blue" style="font-size: 1.5rem; padding-right: 0.2rem">
-                  <span class="material-icons">drive_eta</span>
+                    <span class="material-icons">drive_eta</span>
                   </div>
-
                   <q-item-section>Машины</q-item-section>
                 </q-item>
+
                 <q-item clickable to="/stations" v-close-popup>
                   <div class="text-light-blue" style="font-size: 1.5rem; padding-right: 0.2rem">
                     <span class="material-icons">local_gas_station</span>
@@ -23,7 +30,7 @@
               </q-list>
             </q-menu>
           </q-btn>
-          <q-toolbar-title>Quasar Framework</q-toolbar-title>
+          <q-toolbar-title>Машины и заправки</q-toolbar-title>
         </q-toolbar>
       </q-header>
       <div class="q-pa-md ">
@@ -41,8 +48,10 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+.toolbar {
+  position: sticky;
+}
 </style>
 
 
