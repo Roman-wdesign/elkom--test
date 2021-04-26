@@ -14,50 +14,49 @@
              label="Добавить"/>
     </q-card>
 
-      <q-card-section>
-        <div class="list" v-if="cars.length !==0">
-          <div class="listeners"
-               v-for="(car, index) in cars" :key="car.id"
-               v-bind:title="car.title"
-               v-bind:text="car.text"
-          >
-            <slot :iter="car" :index="index" :text="text" :title="title"></slot>
+    <q-card-section>
+      <div class="list" v-if="cars.length !==0">
+        <div class="listeners"
+             v-for="(car, index) in cars" :key="car.id"
+             v-bind:title="car.title"
+             v-bind:text="car.text"
+        >
+          <div class="car">
+            <q-card dark bordered class="bg-light-blue-6 my-card">
+              <q-card-section>
+                <div class="rounded">
+                  <slot v-bind:index="index" name="ind">{{index + 1}}</slot>
+                </div>
+                <input
+                  class="changing"
+                  v-if="car.edit" v-model="car.text"
+                  @blur="car.edit = false; $emit('update')"
+                  @keyup.enter="car.edit=false; $emit('update')">
+                <div v-else>
+                  <label @click="car.edit = true;"> {{ car.text }} </label>
+                </div>
+              </q-card-section>
+              <q-separator dark inset/>
+              <q-card-section>
 
-
-              <div class="car">
-              <q-card dark bordered class="bg-light-blue-6 my-card">
-                <q-card-section>
-                  <div class="rounded">{{ index + 1 }}</div>
-                  <input
-                    class="changing"
-                    v-if="car.edit" v-model="car.text"
-                    @blur="car.edit = false; $emit('update')"
-                    @keyup.enter="car.edit=false; $emit('update')">
-                  <div v-else>
-                    <label @click="car.edit = true;"> {{ car.text }} </label>
-                  </div>
-                </q-card-section>
-                <q-separator dark inset/>
-                <q-card-section>
-
-                  <input
-                    class="changing"
-                    v-if="car.edit" v-model="car.title"
-                    @blur="car.edit = false; $emit('updateSecond')"
-                    @keyup.enter="car.edit=false; $emit('updateSecond')">
-                  <div v-else>
-                    <label @click="car.edit = true;"> {{ car.title }} </label>
-                  </div>
-                </q-card-section>
-                <q-btn class="delete_btn"
-                       label="Удалить"
-                       @click="removeObj(index)"
-                />
-              </q-card>
-            </div>
+                <input
+                  class="changing"
+                  v-if="car.edit" v-model="car.title"
+                  @blur="car.edit = false; $emit('updateSecond')"
+                  @keyup.enter="car.edit=false; $emit('updateSecond')">
+                <div v-else>
+                  <label @click="car.edit = true;"> {{ car.title }} </label>
+                </div>
+              </q-card-section>
+              <q-btn class="delete_btn"
+                     label="Удалить"
+                     @click="removeObj(index)"
+              />
+            </q-card>
           </div>
         </div>
-      </q-card-section>
+      </div>
+    </q-card-section>
   </div>
 </template>
 

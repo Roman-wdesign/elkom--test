@@ -1,6 +1,10 @@
 <template>
   <div class="container">
     <add-car>
+      <template v-slot:ind="slotProps">
+        {{ slotProps.index + 1 }}
+      </template>
+
     </add-car>
     <div class="all_stations">
       <add-station/>
