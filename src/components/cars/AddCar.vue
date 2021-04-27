@@ -11,6 +11,7 @@
              v-bind:value="inputValue"
              v-on:input="inputChangeHandler"
              @keypress.enter="addNewCar"
+             @submit="createCar"
              label="Добавить"/>
     </q-card>
 
@@ -25,7 +26,7 @@
             <q-card dark bordered class="bg-light-blue-6 my-card">
               <q-card-section>
                 <div class="rounded">
-                  <slot v-bind:index="index" name="ind">{{index + 1}}</slot>
+                  {{ index + 1 }}
                 </div>
                 <input
                   class="changing"
@@ -33,7 +34,7 @@
                   @blur="car.edit = false; $emit('update')"
                   @keyup.enter="car.edit=false; $emit('update')">
                 <div v-else>
-                  <label @click="car.edit = true;"> {{ car.text }} </label>
+                   <label @click="car.edit = true;">{{ car.text }}</label>
                 </div>
               </q-card-section>
               <q-separator dark inset/>
@@ -112,6 +113,19 @@ export default {
     }
   },
   methods: {
+    async createCar() {
+      const response = await fetch('https://elcomplus-219b6-default-rtdb.firebaseio.com/car.json', {
+        method: 'POST',
+        headers: {
+          'Content-Type':'application/json'
+        },
+        body: JSON.stringify({
+          firstCar: this.car
+        })
+      })
+      const firebaseData = await response.json()
+      console.log(firebaseData)
+    },
     inputChangeHandler(event) {
       this.inputValue = event.target.value
     },
