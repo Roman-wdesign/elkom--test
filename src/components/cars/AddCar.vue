@@ -34,19 +34,25 @@
                   @blur="car.edit = false; $emit('update')"
                   @keyup.enter="car.edit=false; $emit('update')">
                 <div v-else>
-                   <label @click="car.edit = true;">{{ car.text }}</label>
+                  <slot v-bind:car="car" name="car">
+                    <label @click="car.edit = true;">
+                      {{ car.text }}
+                    </label>
+                  </slot>
                 </div>
               </q-card-section>
               <q-separator dark inset/>
               <q-card-section>
-
                 <input
                   class="changing"
                   v-if="car.edit" v-model="car.title"
                   @blur="car.edit = false; $emit('updateSecond')"
                   @keyup.enter="car.edit=false; $emit('updateSecond')">
                 <div v-else>
-                  <label @click="car.edit = true;"> {{ car.title }} </label>
+                  <slot v-bind:car="car" name="noeditTilte">
+                    <label @click="car.edit = true;">
+                    {{ car.title }}
+                  </label></slot>
                 </div>
               </q-card-section>
               <q-btn class="delete_btn"
@@ -117,7 +123,7 @@ export default {
       const response = await fetch('https://elcomplus-219b6-default-rtdb.firebaseio.com/car.json', {
         method: 'POST',
         headers: {
-          'Content-Type':'application/json'
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           firstCar: this.car

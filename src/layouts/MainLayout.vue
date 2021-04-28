@@ -2,9 +2,19 @@
   <div class="container">
     <add-car>
 
+      <template v-slot:car="slotProps">
+        <label @click="car.edit = false;"> {{ slotProps.car.text }}</label>
+      </template>
+
+      <template v-slot:noeditTilte="noeditTilte">
+        <label @click="car.edit = false;"> {{ noeditTilte.car.title }}</label>
+      </template>
+
     </add-car>
     <div class="all_stations">
-      <add-station/>
+      <add-station>
+
+      </add-station>
     </div>
   </div>
 </template>
@@ -26,7 +36,9 @@ export default {
 
     return {}
   },
-  methods: {}
+  methods: {
+
+  }
 
 }
 </script>
