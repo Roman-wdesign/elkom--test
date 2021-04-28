@@ -1,18 +1,22 @@
 <template>
   <div class="adding">
 
-    <q-card dark bordered class="my-card">
-      <p>{{ placeholderString }}</p>
 
+    <q-card dark bordered class="my-card">
+
+      <p>{{ placeholderString }}</p>
       <p> {{ inputValue }}</p>
-      <q-btn color="primary"
-             @click="addNewCar"
-             v-bind:placeholder="placeholderString"
-             v-bind:value="inputValue"
-             v-on:input="inputChangeHandler"
-             @keypress.enter="addNewCar"
-             @submit="createCar"
-             label="Добавить"/>
+      <slot>
+        <q-btn color="primary"
+               class="addingCar"
+               @click="addNewCar"
+               v-bind:placeholder="placeholderString"
+               v-bind:value="inputValue"
+               v-on:input="inputChangeHandler"
+               @keypress.enter="addNewCar"
+               @submit="createCar"
+               label="Добавить"/>
+      </slot>
     </q-card>
 
     <q-card-section>
@@ -51,8 +55,8 @@
                 <div v-else>
                   <slot v-bind:car="car" name="noeditTilte">
                     <label @click="car.edit = true;">
-                    {{ car.title }}
-                  </label></slot>
+                      {{ car.title }}
+                    </label></slot>
                 </div>
               </q-card-section>
               <q-btn class="delete_btn"

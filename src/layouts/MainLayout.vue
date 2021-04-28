@@ -1,7 +1,12 @@
 <template>
   <div class="container">
     <add-car>
-
+      <template>
+        <q-btn color="dark"
+               label="Нет доступа"
+               disabled=true
+        ></q-btn>
+      </template>
       <template v-slot:car="slotProps">
         <label @click="car.edit = false;"> {{ slotProps.car.text }}</label>
       </template>
@@ -36,9 +41,7 @@ export default {
 
     return {}
   },
-  methods: {
-
-  }
+  methods: {}
 
 }
 </script>
@@ -50,11 +53,10 @@ html {
 }
 
 .container {
-
   display: flex;
   flex-direction: column;
-
 }
+
 
 .oil {
   padding: 0 1rem;
@@ -68,7 +70,6 @@ html {
   }
 
 }
-
 
 .all_stations {
   display: flex;
