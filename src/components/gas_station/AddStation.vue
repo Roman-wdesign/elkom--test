@@ -7,13 +7,15 @@
       <p>{{ placeholderString }}</p>
 
       <p> {{ inputValue }}</p>
-      <q-btn
-        @click="addNewStation"
-        v-bind:placeholder="placeholderString"
-        v-bind:value="inputValue"
-        v-on:input="inputChangeHandler"
-        @keypress.enter="addNewStation"
-        label="Добавить"/>
+      <slot>
+        <q-btn
+          @click="addNewStation"
+          v-bind:placeholder="placeholderString"
+          v-bind:value="inputValue"
+          v-on:input="inputChangeHandler"
+          @keypress.enter="addNewStation"
+          label="Добавить"/>
+      </slot>
       <div class="all_fuel">
         <p>Всего топлива: <br> {{ allFuel }} литров</p>
       </div>
@@ -42,7 +44,9 @@
                     @blur="station.edit = false; $emit('fuel')"
                     @keyup.enter="station.edit=false; $emit('fuel')">
                   <div v-else>
-                    <label @click="station.edit = true;"> {{ station.fuel }} литров </label>
+                    <slot v-bind:station="station" name="noeditFuel">
+                      <label @click="station.edit = true;"> {{ station.fuel }} литров </label>
+                    </slot>
                   </div>
                 </div>
 
@@ -52,7 +56,9 @@
                   @blur="station.edit = false; $emit('update')"
                   @keyup.enter="station.edit=false; $emit('update')">
                 <div v-else>
-                  <label @click="station.edit = true;"> {{ station.address }} </label>
+                  <slot v-bind:station="station" name="noeditAddress">
+                    <label @click="station.edit = true;"> {{ station.address }} </label>
+                  </slot>
                 </div>
               </q-card-section>
               <q-separator dark inset/>
@@ -64,7 +70,9 @@
                   @blur="station.edit = false; $emit('updateSecond')"
                   @keyup.enter="station.edit=false; $emit('updateSecond')">
                 <div v-else>
-                  <label @click="station.edit = true;"> {{ station.title }} </label>
+                  <slot v-bind:station="station" name="noeditStationTitle">
+                    <label @click="station.edit = true;"> {{ station.title }} </label>
+                  </slot>
                 </div>
 
 
@@ -239,8 +247,9 @@ export default {
   padding: 0.5rem;
 
 }
-.main{
-  margin:0 0 0.5rem  0;
+
+.main {
+  margin: 0 0 0.5rem 0;
 }
 
 

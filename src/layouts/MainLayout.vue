@@ -19,6 +19,25 @@
     <div class="all_stations">
       <add-station>
 
+        <template>
+          <q-btn
+            color="dark"
+            label="Нет доступа"
+            disabled=true
+          ></q-btn>
+        </template>
+
+        <template v-slot:noeditFuel="noeditFuel">
+          <label @click="station.edit = false;"> {{ noeditFuel.station.fuel }} литров </label>
+        </template>
+
+        <template v-slot:noeditAddress="noeditAddress">
+          <label @click="station.edit = false;"> {{ noeditAddress.station.address }} </label>
+        </template>
+
+        <template v-slot:noeditStationTitle="noeditStationTitle">
+          <label @click="station.edit = false;"> {{ noeditStationTitle.station.title }} </label>
+        </template>
       </add-station>
     </div>
   </div>
