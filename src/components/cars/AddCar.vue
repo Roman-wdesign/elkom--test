@@ -14,7 +14,6 @@
                v-bind:value="inputValue"
                v-on:input="inputChangeHandler"
                @keypress.enter="addNewCar"
-               @submit="createCar"
                label="Добавить"/>
       </slot>
     </q-card>
@@ -72,6 +71,9 @@
 </template>
 
 <script>
+// import {api} from 'boot/axios'
+import db from 'boot/firebase'
+
 export default {
   props: {
     title: String,
@@ -82,60 +84,98 @@ export default {
     return {
       placeholderString: '+ новая машина',
       inputValue: '',
-
+      car: '',
 
       cars: [
-        {
-          id: 1,
-          title: 'Hyundai Solaris',
-          text: 'т123дс',
-          edit: false
-        },
-        {
-          id: 2,
-          title: 'Kia Optima',
-          text: 'к237тс',
-          edit: false
-        },
-        {
-          id: 3,
-          title: 'Nissan Qashqai',
-          text: 'у829ми',
-          edit: false
-        },
-        {
-          id: 4,
-          title: 'Skoda Octavia',
-          text: 'а100ее',
-          edit: false
-        },
-        {
-          id: 5,
-          title: 'Toyota Camry',
-          text: 'р500нг',
-          edit: false
-        },
+        // {
+        //   id: 1,
+        //   title: 'Hyundai Solaris',
+        //   text: 'т123дс',
+        //   edit: false
+        // },
+        // {
+        //   id: 2,
+        //   title: 'Kia Optima',
+        //   text: 'к237тс',
+        //   edit: false
+        // },
+        // {
+        //   id: 3,
+        //   title: 'Nissan Qashqai',
+        //   text: 'у829ми',
+        //   edit: false
+        // },
+        // {
+        //   id: 4,
+        //   title: 'Skoda Octavia',
+        //   text: 'а100ее',
+        //   edit: false
+        // },
+        // {
+        //   id: 5,
+        //   title: 'Toyota Camry',
+        //   text: 'р500нг',
+        //   edit: false
+        // },
       ],
       nextCarId: 6,
       editedCard: null,
-
-
     }
   },
+  mounted() {
+    db.collection('list').onSnapshot(snapshot => {
+        snapshot.docChanges().forEach(change => {
+
+          let listChange = change.doc.data();
+
+          if (change.type === 'added') {
+            console.log('New car: ', listChange);
+            // this.list.unshift(listChange)
+          }
+          if (change.type === 'modified') {
+            console.log('Modified car: ', listChange);
+          }
+          if (change.type === 'removed') {
+            console.log('Removed car: ', listChange);
+          }
+        });
+      });
+    // this.loadData ()
+  },
+
   methods: {
-    async createCar() {
-      const response = await fetch('https://elcomplus-219b6-default-rtdb.firebaseio.com/car.json', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          firstCar: this.car
-        })
-      })
-      const firebaseData = await response.json()
-      console.log(firebaseData)
-    },
+    // loadData () {
+    //   api.get('https://elcomplus-219b6-default-rtdb.firebaseio.com/car')
+    //     .then((response) => {
+    //       this. nextCarId = response.data,
+    //         console.log(data)
+    //     })
+    //     .catch(() => {
+    //       this.$q.notify({
+    //         firstCar: this.car,
+    //
+    //       })
+    //     })
+    // },
+    // async createCar() {
+    //   const response = await fetch('https://elcomplus-219b6-default-rtdb.firebaseio.com/car.json', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify({
+    //       firstCar: this.car
+    //     })
+    //   })
+    //   const firebaseData = await response.json()
+    //   this.car.push({
+    //     title: this.list.title,
+    //     text: this.list.text,
+    //     id: firebaseData.car
+    //   })
+    //
+    //   this.car = ''
+    // },
     inputChangeHandler(event) {
       this.inputValue = event.target.value
     },

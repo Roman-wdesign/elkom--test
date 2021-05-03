@@ -5,7 +5,7 @@
   </div>
 </template>
 <script>
-import TheMenu from "components/TheMenu";
+import TheMenu from "components/TheMenu"
 
 export default {
   methods: {

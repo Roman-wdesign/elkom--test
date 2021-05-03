@@ -8,11 +8,11 @@
         ></q-btn>
       </template>
       <template v-slot:car="slotProps">
-        <label @click="car.edit = false;"> {{ slotProps.car.text }}</label>
+        <label @click="car.edit = false;" disabled=true> {{ slotProps.car.text }}</label>
       </template>
 
       <template v-slot:noeditTilte="noeditTilte">
-        <label @click="car.edit = false;"> {{ noeditTilte.car.title }}</label>
+        <label @click="car.edit = false;" disabled=true> {{ noeditTilte.car.title }}</label>
       </template>
 
     </add-car>
@@ -28,15 +28,15 @@
         </template>
 
         <template v-slot:noeditFuel="noeditFuel">
-          <label @click="station.edit = false;"> {{ noeditFuel.station.fuel }} литров </label>
+          <label @click="station.edit = false;"  disabled=true> {{ noeditFuel.station.fuel }} литров </label>
         </template>
 
         <template v-slot:noeditAddress="noeditAddress">
-          <label @click="station.edit = false;"> {{ noeditAddress.station.address }} </label>
+          <label @click="station.edit = false;"  disabled=true> {{ noeditAddress.station.address }} </label>
         </template>
 
         <template v-slot:noeditStationTitle="noeditStationTitle">
-          <label @click="station.edit = false;"> {{ noeditStationTitle.station.title }} </label>
+          <label @click="station.edit = false;"  disabled=true> {{ noeditStationTitle.station.title }} </label>
         </template>
       </add-station>
     </div>
