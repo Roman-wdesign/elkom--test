@@ -15,3 +15,9 @@ export default {
   components: {TheMenu}
 }
 </script>
+
+<style lang="scss">
+html {
+  background-color: $grey-9;
+}
+</style>

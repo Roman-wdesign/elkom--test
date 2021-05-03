@@ -67,10 +67,6 @@ export default {
 
 <style lang="scss">
 
-html {
-  background-color: $grey-9;
-}
-
 .container {
   display: flex;
   flex-direction: column;
