@@ -123,14 +123,12 @@ export default {
     }
   },
   mounted() {
-    db.collection('list').onSnapshot(snapshot => {
-        snapshot.docChanges().forEach(change => {
-
+    db.collection('cars').onSnapshot((snapshot) => {
+        snapshot.docChanges().forEach((change) => {
           let listChange = change.doc.data();
-
           if (change.type === 'added') {
             console.log('New car: ', listChange);
-            // this.list.unshift(listChange)
+            this.cars.push(listChange)
           }
           if (change.type === 'modified') {
             console.log('Modified car: ', listChange);
