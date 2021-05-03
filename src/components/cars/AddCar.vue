@@ -87,36 +87,7 @@ export default {
       car: '',
 
       cars: [
-        // {
-        //   id: 1,
-        //   title: 'Hyundai Solaris',
-        //   text: 'т123дс',
-        //   edit: false
-        // },
-        // {
-        //   id: 2,
-        //   title: 'Kia Optima',
-        //   text: 'к237тс',
-        //   edit: false
-        // },
-        // {
-        //   id: 3,
-        //   title: 'Nissan Qashqai',
-        //   text: 'у829ми',
-        //   edit: false
-        // },
-        // {
-        //   id: 4,
-        //   title: 'Skoda Octavia',
-        //   text: 'а100ее',
-        //   edit: false
-        // },
-        // {
-        //   id: 5,
-        //   title: 'Toyota Camry',
-        //   text: 'р500нг',
-        //   edit: false
-        // },
+
       ],
       nextCarId: 6,
       editedCard: null,

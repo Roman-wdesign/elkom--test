@@ -91,6 +91,8 @@
 </template>
 
 <script>
+import db from "boot/firebase";
+
 export default {
   components: {},
   props: {
@@ -106,46 +108,64 @@ export default {
       inputValue: '',
 
       stations: [
-        {
-          id: 1,
-          title: 'Газпромнефть №110',
-          address: 'Комсомольский просп., 18',
-          fuel: 5,
-          edit: false
-        },
-        {
-          id: 2,
-          title: 'Газпромнефть №110',
-          address: 'Комсомольский просп., 18',
-          fuel: 5,
-          edit: false
-        },
-        {
-          id: 3,
-          title: 'Газпромнефть №110',
-          address: 'Комсомольский просп., 18',
-          fuel: 2,
-          edit: false
-        },
-        {
-          id: 4,
-          title: 'Газпромнефть №110',
-          address: 'Комсомольский просп., 18',
-          fuel: 2,
-          edit: false
-        },
-        {
-          id: 5,
-          title: 'Газпромнефть №110',
-          address: 'Комсомольский просп., 18',
-          fuel: 1,
-          edit: false
-        },
+        // {
+        //   id: 1,
+        //   title: 'Газпромнефть №110',
+        //   address: 'Комсомольский просп., 18',
+        //   fuel: 5,
+        //   edit: false
+        // },
+        // {
+        //   id: 2,
+        //   title: 'Газпромнефть №110',
+        //   address: 'Комсомольский просп., 18',
+        //   fuel: 5,
+        //   edit: false
+        // },
+        // {
+        //   id: 3,
+        //   title: 'Газпромнефть №110',
+        //   address: 'Комсомольский просп., 18',
+        //   fuel: 2,
+        //   edit: false
+        // },
+        // {
+        //   id: 4,
+        //   title: 'Газпромнефть №110',
+        //   address: 'Комсомольский просп., 18',
+        //   fuel: 2,
+        //   edit: false
+        // },
+        // {
+        //   id: 5,
+        //   title: 'Газпромнефть №110',
+        //   address: 'Комсомольский просп., 18',
+        //   fuel: 1,
+        //   edit: false
+        // },
       ],
       nextStationId: 6,
       editedStation: null,
 
     }
+  },
+  mounted() {
+    db.collection('stations').onSnapshot((snapshot) => {
+      snapshot.docChanges().forEach((change) => {
+        let listChange = change.doc.data();
+        if (change.type === 'added') {
+          console.log('New station: ', listChange);
+          this.stations.push(listChange)
+        }
+        if (change.type === 'modified') {
+          console.log('Modified station: ', listChange);
+        }
+        if (change.type === 'removed') {
+          console.log('Removed station: ', listChange);
+        }
+      });
+    });
+    // this.loadData ()
   },
   computed: {
 
@@ -183,7 +203,7 @@ export default {
   name: "AddStation"
 }
 </script>
-
+import db from 'boot/firebase'
 
 <style lang="scss" scoped>
 
